@@ -9,22 +9,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/order")
-
-public class Controller {
-
+public class BasketController {
     private final BasketService service;
 
-    public Controller(BasketService service) {
+    public BasketController(BasketService service) {
         this.service = service;
     }
 
+
     @GetMapping("/add")
-    public void add (@RequestParam("id")  int id) {
-    service.addBasket(new IdProduct(id));
+    public List<Integer> add (@RequestParam ("id") List<Integer> id){
+        return service.add(id);
     }
 
     @GetMapping("/get")
-    public List<IdProduct> basketList(){
-        return service.getBasket();
+    public List<Integer> get() {
+        return service.get();
     }
 }

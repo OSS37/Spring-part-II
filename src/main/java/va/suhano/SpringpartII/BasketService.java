@@ -1,9 +1,27 @@
 package va.suhano.SpringpartII;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
-public interface BasketService {
-    public IdProduct addBasket(IdProduct id);
+@Service
+public class BasketService {
 
-    public List<IdProduct> getBasket();
+    private final Basket basket;
+
+    public BasketService(Basket basket) {
+        this.basket =  basket;
+    }
+
+
+    public List<Integer> add(List<Integer> id) {
+        return basket.add(id);
+    }
+
+
+    public List<Integer> get() {
+        return basket.get();
+    }
+
+
 }
